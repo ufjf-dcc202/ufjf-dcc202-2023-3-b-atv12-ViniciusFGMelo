@@ -1,0 +1,19 @@
+{
+  "name": "ufjf-dcc202-2023-3-atv12-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "e2e": "npx playwright test",
+    "test": "vitest",
+    "start": "npx http-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.38.0",
+    "@types/node": "^20.6.2",
+    "vitest": "^0.34.6"
+  }
+}
