@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCC202 - Atividade 12: Vinicius Ferraz Guedes Melo</title>
+    <script src="main.js" type="module"></script>
+    <style>
+        input:invalid{
+            border: 1px solid red;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>DCC202 - Atividade 12: Vinicius Ferraz Guedes Melo</h1>
+        <p>Esta é a página principal que usa JavaScript para adicionar iteração.</p>
+        <section>
+            <form name="entrada">
+                <fieldset>
+                    <legend>Origem</legend>
+                    <label>
+                        <input type="radio" name="origem" value="pomar" checked />
+                        Pomar</label>
+                    <label>
+                        <input type="radio" name="origem" value="joao" id="Joao"
+                        checked />
+                        João</label>
+                    <label>
+                        <input type="radio" name="origem" value="maria" id="Maria"  
+                        checked />
+                        Maria</label>
+                </fieldset>
+                <fieldset>
+                    <legend>Destino</legend>
+                    <label>
+                        <input type="radio" name="destino" value="pomar" checked />
+                        Pomar </label
+                        >
+                    <label>
+                        <input type="radio" name="destino" value="joao" id="Joao" checked />
+                        Joao </label
+                        >
+                    <label>
+                        <input type="radio" name="destino" value="maria" id="Maria" 
+                        checked />
+                        Maria </label
+                        >
+                </fieldset>
+                <input type="number" name="quantidade" value="1" min="0" max="12" step="1">
+                <select name="fruta">
+                    <option value="maca">Maçã</option>
+                    <option value="pera">Pera</option>
+                    <option value="banana">Banana</option>
+                </select>
+                <button type="submit" name="enviar">Enviar</button>
+            </form>
+        </section>
+        <section id="saida"> 
+            <h2>João</h2>
+            <ol id="joao"></ol>
+            <h2>Maria</h2>
+            <ol id="maria"></ol>
+        </section>
+    </main>
+</body>
+</html>
