@@ -1,6 +1,6 @@
 // @ts-check
 import { test, expect } from "@playwright/test";
-import { getEstoque } from "../estoque";
+//import { getEstoque } from "../estoque.js";
 
 test.describe("estrutura do HTML", () => {
   test("deve ter o charset em UTF-8 no meta dentro do head", async ({
