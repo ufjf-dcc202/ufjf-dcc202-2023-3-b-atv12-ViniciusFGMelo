@@ -15,5 +15,8 @@
     "@playwright/test": "^1.38.0",
     "@types/node": "^20.6.2",
     "vitest": "^0.34.6"
+  },
+  "dependencies": {
+    "playwright": "^1.40.1"
   }
 }
