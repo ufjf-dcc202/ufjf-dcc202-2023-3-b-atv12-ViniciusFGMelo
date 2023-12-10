@@ -28,7 +28,7 @@ function transacao(origem, destino, tipo, quantidade) {
     const pessoaOrigem = estoque[origem];
     const pessoaDestino = estoque[destino];
     let monteOrigem;
-    for(let i=0; i<pessoaOrigem.lenght;i++) {
+    for(let i=0; i<pessoaOrigem.length;i++) {
         const monte = pessoaOrigem[i];
         if(monte.tipo === tipo) {
             monteOrigem = monte;
@@ -37,7 +37,7 @@ function transacao(origem, destino, tipo, quantidade) {
     }
     if(monteOrigem) {return;}
     let monteDestino;
-    for(let i=0; i<pessoaDestino.lenght; i++) {
+    for(let i=0; i<pessoaDestino.length; i++) {
         const monte = pessoaDestino[i];
         if(monte.tipo === tipo) {
             monteDestino = monte;
@@ -56,7 +56,7 @@ function transacao(origem, destino, tipo, quantidade) {
 
 function dePessoaParaPomar(origem, tipo, quantidade) {
     const pessoa = estoque[origem];
-    for(let i=0; i<pessoa.lenght; i++) {
+    for(let i=0; i<pessoa.length; i++) {
         const monte = pessoa[i];
         if(monte.tipo === tipo) {
             monte.qtd -= Math.min(quantidade, monte.qtd);
@@ -67,7 +67,7 @@ function dePessoaParaPomar(origem, tipo, quantidade) {
 
 function dePomarParaPessoa(destino, tipo, quantidade) {
     const pessoa = estoque[destino];
-    for(let i=0; i<pessoa.lenght; i++) {
+    for(let i=0; i<pessoa.length; i++) {
         const monte = pessoa[i];
         if(monte.tipo === tipo) {
             monte.qtd += Math.max(quantidade, 0);
