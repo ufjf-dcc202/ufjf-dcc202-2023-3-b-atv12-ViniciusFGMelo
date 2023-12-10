@@ -1,82 +1,86 @@
 let estoque = {
-    'joao' : [
-        {'tipo': 'maca', 'qtd': 1},
-        {'tipo': 'pera', 'qtd': 2}
+    'joao': [
+        { 'tipo': 'maca', 'quantidade': 1 },
     ],
     'maria': [
-        {'tipo': 'maca', 'qtd': 2},
-        {'tipo': 'banana', 'qtd': 4}
+        { 'tipo': 'maca', 'quantidade': 2 },
     ]
 };
 
-function getEstoque(){
+function getEstoque() {
     return structuredClone(estoque);
 }
 
-function transacao(origem, destino, tipo, quantidade) {
-    if(origem === destino) {return;}
-    if(destino === "pomar") {
-        dePessoaParaPomar(origem, tipo, quantidade);
+function transacaoNoEstoque(origem, destino, tipo, qtd) {
+    if (origem === destino) { return; }
+    if (destino === "pomar") {
+        dePessoaParaPomar(origem, tipo, qtd);
         return;
     }
 
-    if(origem === "pomar") {
-        dePomarParaPessoa(destino, tipo, quantidade)
+    if (origem === "pomar") {
+        dePomarParaPessoa(destino, tipo, qtd)
         return;
     }
 
+    dePessoaParaPessoa(origem, destino, tipo, qtd);
+}
+
+function dePessoaParaPessoa(origem, destino, tipo, qtd) {
     const pessoaOrigem = estoque[origem];
     const pessoaDestino = estoque[destino];
     let monteOrigem;
-    for(let i=0; i<pessoaOrigem.length;i++) {
+    for (let i = 0; i < pessoaOrigem.length; i++) {
         const monte = pessoaOrigem[i];
-        if(monte.tipo === tipo) {
+        if (monte.tipo === tipo) {
             monteOrigem = monte;
             break;
         }
     }
-    if(monteOrigem) {return;}
+    if (monteOrigem === undefined) { return; }
     let monteDestino;
-    for(let i=0; i<pessoaDestino.length; i++) {
+    for (let i = 0; i < pessoaDestino.length; i++) {
         const monte = pessoaDestino[i];
-        if(monte.tipo === tipo) {
+        if (monte.tipo === tipo) {
             monteDestino = monte;
             break;
         }
     }
-    if(monteDestino) {
-        monteDestino = {'tipo': tipo, qtd:0};
+    if (!monteDestino) {
+        monteDestino = { 'tipo': tipo, 'quantidade': 0 };
         pessoaDestino.push(monteDestino);
     }
-    const qtdReal = monteDestino.qtd += Math.min(quantidade, monteOrigem.qtd);
-    monteDestino.qtd += qtdReal;
-    monteOrigem.qtd += qtdReal
-
+    const qtdReal = Math.min(qtd, monteOrigem.quantidade);
+    monteDestino.quantidade += qtdReal;
+    monteOrigem.quantidade -= qtdReal
 }
 
-function dePessoaParaPomar(origem, tipo, quantidade) {
+function dePessoaParaPomar(origem, tipo, qtd) {
     const pessoa = estoque[origem];
-    for(let i=0; i<pessoa.length; i++) {
+    for (let i = 0; i < pessoa.length; i++) {
         const monte = pessoa[i];
-        if(monte.tipo === tipo) {
-            monte.qtd -= Math.min(quantidade, monte.qtd);
+        if (monte.tipo === tipo) {
+            monte.quantidade -= Math.min(qtd, monte.quantidade);
             return;
         }
     }
 }
 
-function dePomarParaPessoa(destino, tipo, quantidade) {
+function dePomarParaPessoa(destino, tipo, qtd) {
     const pessoa = estoque[destino];
-    for(let i=0; i<pessoa.length; i++) {
+    for (let i = 0; i < pessoa.length; i++) {
         const monte = pessoa[i];
-        if(monte.tipo === tipo) {
-            monte.qtd += Math.max(quantidade, 0);
+        if (monte.tipo === tipo) {
+            monte.quantidade += Math.max(qtd, 0);
             return;
         }
     }
-    const novoMonte = {'tipo': tipo, 'qtd': Math.max(quantidade, 0)};
+    const novoMonte = { 'tipo': tipo, 'quantidade': Math.max(qtd, 0) };
     pessoa.push(novoMonte);
 }
 
+function limpaEstoque(){
+    estoque = {};
+}
 
-export {getEstoque, transacao};
+export { getEstoque, transacaoNoEstoque, limpaEstoque };
