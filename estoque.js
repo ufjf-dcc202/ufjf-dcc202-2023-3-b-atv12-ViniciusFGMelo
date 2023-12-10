@@ -80,7 +80,9 @@ function dePomarParaPessoa(destino, tipo, qtd) {
 }
 
 function limpaEstoque(){
-    estoque = {};
+    for(let pessoa in estoque){
+        estoque[pessoa] = [];
+    }
 }
 
 export { getEstoque, transacaoNoEstoque, limpaEstoque };
